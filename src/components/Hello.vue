@@ -3,15 +3,18 @@
     <header-view :color="color" @headerClick="changeColor()"></header-view>
     <h1>{{msg}}</h1>
     <input v-model="color">
+    {{count}}
     <hr>
-    <counter-button :number="number" @increment="increment()"></counter-button>
-    {{number}}
+    <!--<counter-button :number="number" @incrementor="incrementor()"></counter-button>-->
+    <button v-on:click="increment()"></button>
+
   </div>
 </template>
 
 <script>
 import HeaderView from './Header'
 import CounterButton from './CounterButton'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'hello',
   data () {
@@ -21,13 +24,21 @@ export default {
       number: 0
     }
   },
+  computed: {
+    ...mapGetters([
+      'count'
+    ])
+  },
   methods: {
     changeColor () {
       this.color = '#FFF'
     },
-    increment () {
+    incrementor () {
       this.number++
-    }
+    },
+    ...mapActions([
+      'increment'
+    ])
   },
   components: {
     HeaderView,

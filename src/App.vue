@@ -5,8 +5,16 @@
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    text () {
+      return 'Hi'
+    }
+  },
+  methods: {
+  }
 }
 </script>
 
